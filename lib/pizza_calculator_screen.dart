@@ -47,6 +47,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
       _sauce = value;
     });
   }
+  final _messengerKey = GlobalKey<ScaffoldMessengerState>();
 
   @override
   Widget build(BuildContext context) {
@@ -56,25 +57,104 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
     const linkTextStyle = TextStyle(
         fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0079D0));
 */
+    final ButtonStyle buttonStyle =
+        TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
+
     return MaterialApp(
+      scaffoldMessengerKey: _messengerKey,
       home: Scaffold(
-          /*   appBar: AppBar(
-            title: const Text('Home'),
-          ),*/
+             appBar: AppBar(
+               title: const Text('Заказ пиццы'),
+               actions: [
+                 IconButton(onPressed: () {}, icon: const Icon (Icons.announcement_rounded)),
+                 TextButton(
+                     onPressed: () {},
+                     child: const Text("Профиль"),
+                 style: buttonStyle,
+                 ),
+
+                 //IconButton(onPressed: () {}, icon: const Icon (Icons.eleven_mp_sharp)),
+                 //IconButton(onPressed: () {}, icon: const Icon (Icons.one_k_plus_sharp)),
+
+               ],
+          ),
+          drawer: Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                DrawerHeader(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: Container(
+                    height: 200,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 132,
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(50.0))
+                          ),
+                          child: Image.asset('assets/images/pizza-and-ingredients.jpeg'),
+                        ),
+                        //const Text("Навигация во Flutter")
+                      ],
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.one_k),
+                  title: const Text("Каталог"),
+                  onTap: () {
+                    _messengerKey.currentState!.showSnackBar(
+                        const SnackBar(content: Text('Переход в каталог')));
+
+                  },
+                ),
+                ListTile(
+                    leading: const Icon(Icons.two_k),
+                    title: const Text("Корзина"),
+                    onTap: (){
+                      _messengerKey.currentState!.showSnackBar(
+                          const SnackBar(content: Text('Переход в корзину')));
+                    }
+                ),
+                const Divider(),
+                const Padding(
+                  padding: EdgeInsets.only(left: 10.0),
+                  child: Text("Профиль"),
+                ),
+                ListTile(
+                    leading: const Icon(Icons.settings),
+                    title: const Text("Настройки"),
+                    onTap: (){
+                      _messengerKey.currentState!.showSnackBar(
+                          const SnackBar(content: Text('Переход в настройки')));
+                    }
+                ),
+              ],
+
+            ),
+          ),
           body: Container(
         width: double.infinity,
         child: Column(
           children: [
             const SizedBox(
-              height: 62,
+              height: 0,
             ),
             SizedBox(
               height: 100,
               child: Image.asset('assets/images/pizza-cut.png'),
             ),
 
+            /*
             const Text("Калькулятор пиццы",
                 style: TextStyle(fontSize: 36, color: Color(0xFF000000))),
+
+             */
             const Text("Выберите параметры:",
                 style: TextStyle(fontSize: 16, color: Color(0xFF000000))),
             const SizedBox(
