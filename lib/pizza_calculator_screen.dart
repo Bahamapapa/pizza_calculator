@@ -3,6 +3,8 @@ import 'package:sliding_switch/sliding_switch.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:intl/intl.dart';
 
+import 'auth_page.dart';
+
 class PizzaCalculatorScreen extends StatefulWidget {
   const PizzaCalculatorScreen({Key? key}) : super(key: key);
 
@@ -112,6 +114,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                         const SnackBar(content: Text('Переход в каталог')));
 
                   },
+                  
                 ),
                 ListTile(
                     leading: const Icon(Icons.two_k),
@@ -130,8 +133,10 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                     leading: const Icon(Icons.settings),
                     title: const Text("Настройки"),
                     onTap: (){
-                      _messengerKey.currentState!.showSnackBar(
-                          const SnackBar(content: Text('Переход в настройки')));
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AuthPage()),
+                      );
                     }
                 ),
               ],
@@ -323,7 +328,9 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
                 width: 154,
                 height: 42,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Text('Заказать'),
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFF0079D0),
