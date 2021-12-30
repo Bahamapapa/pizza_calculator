@@ -6,6 +6,6 @@ import 'package:pizza_calculator/auth_page.dart';
 void main() {
   runApp(const MaterialApp(
     title: "Pizza",
-      home: AuthPage(),
+      home: PizzaCalculatorScreen(), //AuthPage(),
   )/*const PizzaCalculatorScreen() const NavigationDrawerScreen()*/);
 }

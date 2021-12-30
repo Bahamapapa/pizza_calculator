@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_calculator/app_theme.dart';
 import 'package:sliding_switch/sliding_switch.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:intl/intl.dart';
@@ -64,6 +65,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
 
     return MaterialApp(
       scaffoldMessengerKey: _messengerKey,
+      theme: globalTheme(),
       home: Scaffold(
              appBar: AppBar(
                title: const Text('Заказ пиццы'),
@@ -296,6 +298,7 @@ class _PizzaCalculatorScreenState extends State<PizzaCalculatorScreen> {
 
             // Выводим итоговую стоимоть
           Container(
+              color: Theme.of(context).colorScheme.secondary,
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.only(top: 10, left: 20),
               child: Text("Стоимость: ",
